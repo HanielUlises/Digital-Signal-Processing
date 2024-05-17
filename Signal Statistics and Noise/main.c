@@ -4,6 +4,20 @@
 #include "signal_operations.h"
 #include "tests.h"
 
+void signal_file(const char *filename, double *signal, int length) {
+    FILE *file = fopen(filename, "w");
+    if (file == NULL) {
+        fprintf(stderr, "Error opening file %s\n", filename);
+        exit(EXIT_FAILURE);
+    }
+
+    for (int i = 0; i < length; i++) {
+        fprintf(file, "%d %f\n", i, signal[i]);
+    }
+
+    fclose(file);
+}
+
 int main() {
     double mean = 0.0;
     double var = 0.0;
@@ -32,6 +46,8 @@ int main() {
     compute_median(&median);
     compute_skewness(mean, &skewness);
     compute_kurtosis(mean, &kurtosis);
+
+    signal_file("signal.dat", InputSignal_f32_1kHz_15kHz, SIGNAL_LEN);
 
     return 0;
 }
