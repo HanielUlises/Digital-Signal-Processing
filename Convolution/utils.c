@@ -17,6 +17,8 @@ void convolution(double *sig_src_arr, double *sig_dest_arr, double *imp_resp_arr
 void writeFile(){
     FILE *input_sig_fptr, *imp_rsp_fptr, *output_sig_fptr;
 
+    double Output_signal[SIGNAL_LEN+IMP_RSP_LEN];
+
     input_sig_fptr = fopen("input_signal.dat", "w");
     imp_rsp_fptr = fopen("impulse_response.dat", "w");
     output_sig_fptr = fopen("output_signal.dat", "w");
