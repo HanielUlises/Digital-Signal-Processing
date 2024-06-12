@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include "utils.h"
 
 int main (){
-    void writeFile();
+    writeFile();
     return 0;
 }
