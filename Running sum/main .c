@@ -1,6 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-extern double Impulse_response[29];
 extern double InputSignal_f32_1kHz_15kHz[320];
 
 void running_sum(double *sig_src_arr, double *sig_dest_arr, int sig_len);
@@ -20,9 +20,18 @@ void running_sum(double *sig_src_arr, double *sig_dest_arr, int sig_len) {
 
 void process_running_sum() {
     double OutputSignal[320];
+    FILE *output_sig_fptr;
+
     running_sum(InputSignal_f32_1kHz_15kHz, OutputSignal, 320);
 
-    for (int i = 0; i < 320; i++) {
-        printf("%f\n", OutputSignal[i]);
+    output_sig_fptr = fopen("output_signal.dat", "w");
+    if (output_sig_fptr == NULL) {
+        printf("Error opening file!\n");
+        return;
     }
+
+    for (int i = 0; i < 320; i++) {
+        fprintf(output_sig_fptr, "%f\n", OutputSignal[i]);
+    }
+    fclose(output_sig_fptr);
 }
