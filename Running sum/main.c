@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "utils.h"
+
 extern double InputSignal_f32_1kHz_15kHz[320];
 
 void running_sum(double *sig_src_arr, double *sig_dest_arr, int sig_len);
