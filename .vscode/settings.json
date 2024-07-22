@@ -2,6 +2,7 @@
     "files.associations": {
         "tests.h": "c",
         "signal_operations.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "stdio.h": "c"
     }
 }
