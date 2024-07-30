@@ -1,5 +1,9 @@
 #include "dft.h"
 
+double Output_REX[SIG_LENGTH/2];
+double Output_IMX[SIG_LENGTH/2];
+double Output_MAG[SIG_LENGTH/2];
+
 void calc_sig_dft(double *sig_src_arr, double *sig_dest_rex_arr, double *sig_dest_imx_arr, int sig_length){
     // Destination arrays
     for(size_t j = 0; j < sig_length/2; j++){
@@ -16,5 +20,11 @@ void calc_sig_dft(double *sig_src_arr, double *sig_dest_rex_arr, double *sig_des
             // Imaginary part
             sig_dest_imx_arr[k] = sig_dest_imx_arr[k] - sig_src_arr[i] * sin(2 * M_PI * k * i / sig_length);
         }
+    }
+}
+
+void get_dft_output_mag(double *sig_dest_mag_arr, double *sig_src_rex_arr, double *sig_src_imx_arr, int sig_length){
+    for (int k = 0; k < sig_length/2; k++) {
+        sig_dest_mag_arr[k] = sqrt(pow(sig_src_rex_arr[k], 2) + pow(sig_src_imx_arr[k], 2));
     }
 }
