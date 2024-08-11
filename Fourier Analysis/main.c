@@ -1,4 +1,5 @@
-#include "dft.h"
+#include "DFT/dft.h"
+#include "IDFT/idft.h"
 
 int main()
 {
